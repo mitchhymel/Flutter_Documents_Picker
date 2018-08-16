@@ -54,8 +54,11 @@ public class DocumentsPickerPlugin implements MethodCallHandler, PluginRegistry.
         ActivityCompat.requestPermissions(activity, new String[]{Manifest.permission.WRITE_EXTERNAL_STORAGE}, REQUEST_READ_PERMISSION);
       } else {
         this.result = result;
+        String[] csvTypes = {".csv"};
         FilePickerBuilder.getInstance().setMaxCount(1)
                 .setActivityTheme(R.style.LibAppTheme)
+                .addFileSupport("CSV", csvTypes)
+                .enableDocSupport(true)
                 .pickFile(activity);
       }
     } else {
